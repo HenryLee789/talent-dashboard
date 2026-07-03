@@ -1,3 +1,5 @@
+English | [简体中文](./使用说明.md)
+
 # User Guide
 
 This guide explains how to start Talent Management Dashboard on Windows, import an Excel roster, review the dashboard, generate analysis reports, and export report files.

@@ -1,3 +1,5 @@
+English | [简体中文](./字段映射说明.md)
+
 # Field Mapping
 
 Talent Management Dashboard reads the first row of the first sheet in the Excel roster as field headers and maps those headers to the built-in standard field dictionary. Before matching, the system trims leading and trailing spaces, collapses repeated spaces, removes trailing colons, and matches field names case-insensitively.

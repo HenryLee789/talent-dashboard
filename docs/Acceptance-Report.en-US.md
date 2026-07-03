@@ -1,3 +1,5 @@
+English | [简体中文](./验收记录.md)
+
 # Acceptance Report
 
 This document records the major acceptance checks completed for the current version.
