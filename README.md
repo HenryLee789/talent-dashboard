@@ -4,6 +4,37 @@
 
 > 免责声明：本仓库仅用于系统展示和二次开发，请勿将真实员工花名册、身份证号、手机号、薪酬、绩效明细、组织敏感数据或任何真实公司数据提交到公开仓库。
 
+## 别人怎么使用
+
+### 方式一：在线使用
+
+GitHub Pages 部署完成后，可以直接打开：
+
+```text
+https://henrylee789.github.io/talent-dashboard/
+```
+
+这是最适合分享给普通使用者的方式。用户在浏览器里打开页面后，可以下载 Excel 模板、导入本地 Excel、查看看板、生成报告并导出文件。
+
+### 方式二：下载源码 ZIP 后本地运行
+
+在 GitHub 仓库页面点击绿色 `Code` 按钮，然后选择 `Download ZIP`。下载后解压文件夹，双击：
+
+```text
+启动人才看板.bat
+```
+
+首次启动会检查 Node.js 和 pnpm，并在需要时安装项目依赖。
+
+### 方式三：用 Git 克隆后运行
+
+```bash
+git clone https://github.com/HenryLee789/talent-dashboard.git
+cd talent-dashboard
+pnpm install
+pnpm dev --host 127.0.0.1
+```
+
 ## 功能亮点
 
 - Excel 花名册导入，支持 `.xlsx` 和 `.xls`。
@@ -226,6 +257,37 @@ pnpm build
 Key Talent Management Dashboard is a React + TypeScript front-end HR analytics tool. It imports Excel roster files, automatically maps common field aliases, generates a talent dashboard, risk warnings, monthly HR reports, and exports PPT, Word, PDF, and Excel deliverables.
 
 > Disclaimer: This repository is for product demonstration and further development only. Do not commit real employee rosters, identity numbers, phone numbers, compensation data, detailed performance records, sensitive organization data, or any real company data to a public repository.
+
+## How Others Can Use It
+
+### Option 1: Use It Online
+
+After GitHub Pages deployment completes, open:
+
+```text
+https://henrylee789.github.io/talent-dashboard/
+```
+
+This is the best option for non-technical users. They can open the app in a browser, download the Excel template, import a local Excel file, view the dashboard, generate reports, and export files.
+
+### Option 2: Download the Source ZIP and Run Locally
+
+On the GitHub repository page, click the green `Code` button and choose `Download ZIP`. After extracting the folder, double-click:
+
+```text
+启动人才看板.bat
+```
+
+On first startup, the launcher checks Node.js and pnpm and installs project dependencies when needed.
+
+### Option 3: Clone with Git
+
+```bash
+git clone https://github.com/HenryLee789/talent-dashboard.git
+cd talent-dashboard
+pnpm install
+pnpm dev --host 127.0.0.1
+```
 
 ## Features
 
