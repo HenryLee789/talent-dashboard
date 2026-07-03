@@ -21,6 +21,12 @@ https://henrylee789.github.io/talent-dashboard/
 在 GitHub 仓库页面点击绿色 `Code` 按钮，然后选择 `Download ZIP`。下载后解压文件夹，双击：
 
 ```text
+START_HERE.bat
+```
+
+或者双击中文入口：
+
+```text
 一键部署环境并启动.bat
 ```
 
@@ -84,7 +90,7 @@ pnpm dev --host 127.0.0.1
 如果你只是使用系统，推荐双击根目录中的：
 
 ```text
-启动人才看板.bat
+START_HERE.bat
 ```
 
 启动成功后，浏览器会自动打开：
@@ -204,6 +210,8 @@ Excel 缺少字段不会导致导入失败，系统不会编造假数据。
 │  ├─ styles/
 │  ├─ types/
 │  └─ utils/
+├─ START_HERE.bat
+├─ 一键部署环境并启动.bat
 ├─ 启动人才看板.bat
 ├─ package.json
 ├─ pnpm-lock.yaml
@@ -279,6 +287,12 @@ This is the best option for non-technical users. They can open the app in a brow
 ### Option 2: Download the Source ZIP and Run with One Click
 
 On the GitHub repository page, click the green `Code` button and choose `Download ZIP`. After extracting the folder, double-click:
+
+```text
+START_HERE.bat
+```
+
+Or double-click the Chinese launcher:
 
 ```text
 一键部署环境并启动.bat
@@ -464,6 +478,8 @@ If no report exists before export, the app generates the current monthly report 
 │  ├─ styles/
 │  ├─ types/
 │  └─ utils/
+├─ START_HERE.bat
+├─ 一键部署环境并启动.bat
 ├─ 启动人才看板.bat
 ├─ package.json
 ├─ pnpm-lock.yaml

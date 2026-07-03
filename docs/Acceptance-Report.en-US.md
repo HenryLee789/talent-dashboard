@@ -47,6 +47,7 @@ This document records the major acceptance checks completed for the current vers
 - Browser auto-open after server readiness passed.
 - Added one-click environment setup and launcher script with corepack-based pnpm preparation.
 - Added local `.runtime` support for downloading portable Node.js when Node.js is missing.
+- Added `START_HERE.bat` as an easy-to-find launcher for users who download the ZIP package.
 
 ## Persistence
 

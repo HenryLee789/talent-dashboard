@@ -7,6 +7,12 @@ This guide is written for regular users. No coding knowledge is required.
 Find this file in the project folder:
 
 ```text
+START_HERE.bat
+```
+
+Or use the Chinese launcher:
+
+```text
 一键部署环境并启动.bat
 ```
 
@@ -36,7 +42,7 @@ Close the launcher command window.
 
 To create a desktop shortcut:
 
-1. Right-click `一键部署环境并启动.bat`.
+1. Right-click `START_HERE.bat` or `一键部署环境并启动.bat`.
 2. Choose “Send to > Desktop shortcut”.
 3. Use the desktop shortcut next time.
 
