@@ -7,12 +7,18 @@ This guide is written for regular users. No coding knowledge is required.
 Find this file in the project folder:
 
 ```text
-启动人才看板.bat
+一键部署环境并启动.bat
 ```
 
-Double-click it to start the app.
+Double-click it to deploy the required environment and start the app.
 
-On first startup, the launcher may install dependencies automatically. This can take a few minutes. Keep the command window open.
+On first startup, the script checks Node.js and pnpm. If Node.js is missing, it downloads a portable Node.js runtime into the local `.runtime` folder. If pnpm is missing, it prepares pnpm through corepack. It then installs project dependencies automatically. This can take a few minutes. Keep the command window open.
+
+If Node.js and pnpm are already configured on the computer, you can also double-click:
+
+```text
+启动人才看板.bat
+```
 
 After startup, the browser should open automatically. If it does not, visit:
 
@@ -30,7 +36,7 @@ Close the launcher command window.
 
 To create a desktop shortcut:
 
-1. Right-click `启动人才看板.bat`.
+1. Right-click `一键部署环境并启动.bat`.
 2. Choose “Send to > Desktop shortcut”.
 3. Use the desktop shortcut next time.
 

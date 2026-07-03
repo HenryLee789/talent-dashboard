@@ -16,15 +16,21 @@ https://henrylee789.github.io/talent-dashboard/
 
 这是最适合分享给普通使用者的方式。用户在浏览器里打开页面后，可以下载 Excel 模板、导入本地 Excel、查看看板、生成报告并导出文件。
 
-### 方式二：下载源码 ZIP 后本地运行
+### 方式二：下载源码 ZIP 后一键部署运行
 
 在 GitHub 仓库页面点击绿色 `Code` 按钮，然后选择 `Download ZIP`。下载后解压文件夹，双击：
 
 ```text
-启动人才看板.bat
+一键部署环境并启动.bat
 ```
 
-首次启动会检查 Node.js 和 pnpm，并在需要时安装项目依赖。
+首次启动会检查 Node.js 和 pnpm；如果没有 Node.js，会下载免安装版 Node.js 到项目本地 `.runtime` 目录；如果没有 pnpm，会通过 corepack 自动准备。随后脚本会安装项目依赖并启动系统。
+
+如果你的电脑已经配置好 Node.js 和 pnpm，也可以直接双击：
+
+```text
+启动人才看板.bat
+```
 
 ### 方式三：用 Git 克隆后运行
 
@@ -270,15 +276,21 @@ https://henrylee789.github.io/talent-dashboard/
 
 This is the best option for non-technical users. They can open the app in a browser, download the Excel template, import a local Excel file, view the dashboard, generate reports, and export files.
 
-### Option 2: Download the Source ZIP and Run Locally
+### Option 2: Download the Source ZIP and Run with One Click
 
 On the GitHub repository page, click the green `Code` button and choose `Download ZIP`. After extracting the folder, double-click:
 
 ```text
-启动人才看板.bat
+一键部署环境并启动.bat
 ```
 
-On first startup, the launcher checks Node.js and pnpm and installs project dependencies when needed.
+On first startup, the script checks Node.js and pnpm. If Node.js is missing, it downloads a portable Node.js runtime into the local `.runtime` folder. If pnpm is missing, it prepares pnpm through corepack. It then installs dependencies and starts the app.
+
+If Node.js and pnpm are already configured on your computer, you can also double-click:
+
+```text
+启动人才看板.bat
+```
 
 ### Option 3: Clone with Git
 
