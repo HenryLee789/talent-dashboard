@@ -1,0 +1,58 @@
+node_modules/
+dist/
+
+# Build and cache files
+*.tsbuildinfo
+.vite/
+coverage/
+
+# Package-manager files not used by this project
+package-lock.json
+yarn.lock
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Local exported reports, real rosters, and ad-hoc data files
+*.xlsx
+*.xls
+*.xlsm
+*.csv
+*.pptx
+*.docx
+*.pdf
+exports/
+reports/
+real-data/
+private-data/
+local-data/
+localStorage*.json
+*localStorage*.json
+*roster*.json
+*employee*.json
+*花名册*.json
+*员工*.json
+
+# Editor and OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.temp
+~$*
