@@ -2,7 +2,7 @@
 setlocal
 
 cd /d "%~dp0"
-title Talent Dashboard Launcher
+title Talent Management Dashboard Launcher
 
 where node >nul 2>nul
 if errorlevel 1 (

@@ -1,12 +1,12 @@
 # Field Mapping
 
-The app reads the first row of the first Excel sheet as field headers and maps them to standard fields automatically. Header names are trimmed, repeated spaces are collapsed, trailing colons are removed, and matching is case-insensitive.
+Talent Management Dashboard reads the first row of the first sheet in the Excel roster as field headers and maps those headers to the built-in standard field dictionary. Before matching, the system trims leading and trailing spaces, collapses repeated spaces, removes trailing colons, and matches field names case-insensitively.
 
-If multiple source headers map to the same standard field, the app uses the first matched header and marks the others as unmapped.
+If multiple source headers map to the same standard field, the system uses the first matched header and marks the remaining duplicate headers as unmapped.
 
-## Standard Fields and Common Aliases
+## Standard Fields and Aliases
 
-| Standard field | Common aliases |
+| Standard field | Supported aliases |
 | --- | --- |
 | 姓名 | 姓名, 员工姓名, 人员姓名, 员工, Name, Employee Name |
 | 性别 | 性别, Gender, Sex |
@@ -31,21 +31,21 @@ If multiple source headers map to the same standard field, the app uses the firs
 
 ## Impact of Missing Fields
 
-| Missing field | Possible impact |
+| Missing field | Affected analysis |
 | --- | --- |
 | 性别 | Male/female ratio |
-| 年龄, 出生日期 | Average age, under-35 ratio, age distribution |
-| 学历 | Master-degree-and-above ratio, education distribution |
-| 入职日期, 任职年限 | Average tenure, tenure distribution |
-| 绩效等级 | Performance chart |
+| 年龄, 出生日期 | Average age, under-35 ratio, and age distribution. If either field is provided, the related analysis can continue. |
+| 学历 | Master-degree-and-above ratio and education distribution |
+| 入职日期, 任职年限 | Average tenure and tenure distribution. If either field is provided, the related analysis can continue. |
+| 绩效等级 | Performance distribution chart |
 | 是否关键人才 | Key talent count |
 | 人才分类 | Talent matrix |
 | 是否有继任者, 继任风险 | Succession risk |
 
-## Missing-Field Principles
+## Handling Principles
 
-- Missing fields do not block import.
-- The app does not fabricate data.
-- If a value can be derived from another field, the app uses that field where possible, such as deriving age from birth date or tenure from hire date.
-- Metrics, charts, or report sections that cannot be derived show empty states or missing-field notes.
-- Exported files reuse the current missing-field notes.
+- Missing fields do not block Excel roster import.
+- The system does not fabricate data.
+- Metrics that can be derived from other fields continue to work, such as age from `出生日期` and tenure from `入职日期`.
+- Metrics, charts, or report sections that cannot be calculated show empty states or missing field notes.
+- Exported files reuse the current missing field notes and data quality notes.

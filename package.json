@@ -1,9 +1,29 @@
 {
   "name": "talent-dashboard",
   "private": true,
+  "description": "Talent Management Dashboard with Excel roster import, field mapping, HR analytics, analysis reports, and multi-format export.",
   "version": "0.1.0",
+  "license": "UNLICENSED",
   "packageManager": "pnpm@11.7.0",
   "type": "module",
+  "keywords": [
+    "talent-dashboard",
+    "hr-analytics",
+    "react",
+    "typescript",
+    "vite",
+    "excel",
+    "dashboard",
+    "report-generator"
+  ],
+  "homepage": "https://henrylee789.github.io/talent-dashboard/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HenryLee789/talent-dashboard.git"
+  },
+  "bugs": {
+    "url": "https://github.com/HenryLee789/talent-dashboard/issues"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",

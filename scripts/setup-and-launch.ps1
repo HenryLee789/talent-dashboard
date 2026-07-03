@@ -170,7 +170,7 @@ function Invoke-PackageManager {
 }
 
 try {
-  Write-Host "Talent Dashboard - one-click environment setup and launcher"
+  Write-Host "Talent Management Dashboard - environment setup and launcher"
   Write-Host "Project root: $ProjectRoot"
 
   Write-Step "Checking Node.js"
@@ -185,7 +185,7 @@ try {
 
   if ($SetupOnly) {
     Write-Step "Environment setup completed"
-    Write-Host "Dependencies are ready. The app was not started because -SetupOnly was used."
+    Write-Host "Dependencies are ready. Startup was skipped because setup-only mode is active."
     exit 0
   }
 

@@ -27,7 +27,7 @@ function fail(message, error) {
     console.error(error.message || String(error));
   }
   console.error("");
-  console.error("请按任意键关闭窗口。");
+  console.error("按任意键关闭窗口。");
   process.stdin.resume();
   process.stdin.once("data", () => process.exit(1));
 }
@@ -90,11 +90,11 @@ function detectPackageManager() {
     return {
       ok: false,
       message:
-        "未检测到 pnpm，也未检测到 corepack。请安装新版 Node.js，或执行 npm install -g pnpm 后重新启动。",
+        "未检测到 pnpm 或 corepack。安装新版 Node.js，或执行 npm install -g pnpm 后重新启动。",
     };
   }
 
-  log("未检测到 pnpm，正在尝试使用 Node.js 自带的 corepack 启动 pnpm...");
+  log("未检测到 pnpm，正在使用 Node.js 自带的 corepack 准备 pnpm。");
   runCheck("corepack", ["enable"]);
 
   const pnpmAfterEnableCheck = runCheck("pnpm", ["--version"]);
@@ -120,7 +120,7 @@ function detectPackageManager() {
   return {
     ok: false,
     message:
-      "已检测到 Node.js 和 corepack，但 pnpm 启动失败。请打开 PowerShell 执行 corepack enable，或执行 npm install -g pnpm 后重新双击启动器。",
+      "已检测到 Node.js 和 corepack，但 pnpm 启动失败。打开 PowerShell 执行 corepack enable，或执行 npm install -g pnpm 后重新启动。",
   };
 }
 
@@ -151,7 +151,7 @@ function ensureDependencies() {
   }
 
   log("首次启动检测到 node_modules 不存在，将自动安装依赖。");
-  log("这一步可能需要几分钟，请保持窗口打开。");
+  log("依赖安装通常需要几分钟。保持窗口打开，直到安装完成。");
   runPackageManagerCommand(["install"], "正在安装依赖");
 }
 
@@ -188,7 +188,7 @@ function extractLocalUrl(text) {
 function startDevServer() {
   log("");
   log("正在启动关键人才管理数据看板系统...");
-  log("如果看到 VITE ready，说明服务已启动。");
+  log("出现 VITE ready 后，本地服务已启动。");
   log("关闭这个命令行窗口后，系统服务会停止。");
   log("");
 

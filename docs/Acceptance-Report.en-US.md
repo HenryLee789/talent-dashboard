@@ -11,23 +11,23 @@ This document records the major acceptance checks completed for the current vers
 
 ## Excel Import and Field Handling
 
-- Excel import passed for `.xlsx` and `.xls`.
+- Excel roster import passed for `.xlsx` and `.xls`.
 - The first sheet is read by default.
 - Header-row recognition passed.
 - Automatic field alias mapping passed.
-- Missing-field empty states passed.
+- Missing field notes passed.
 - Missing fields do not block import.
-- The app does not fabricate data when fields are missing.
-- Invalid or incomplete data does not crash the page; data-quality notes are generated.
+- The system does not fabricate data when fields are missing.
+- Invalid or incomplete data generates data quality notes and does not crash the page.
 
-## Dashboard and Report
+## Dashboard and Analysis Report
 
-- Dynamic dashboard refresh passed.
+- Dashboard refresh passed.
 - Core metric calculation passed.
 - Age, education, tenure, and performance charts passed.
 - Talent matrix and succession risk warnings passed.
-- Report generation passed.
-- Report content reuses the current dashboard and imported data.
+- Analysis report generation passed.
+- The analysis report reuses the current dashboard and imported data.
 
 ## Export and Print
 
@@ -35,26 +35,26 @@ This document records the major acceptance checks completed for the current vers
 - Word export passed.
 - PDF export passed.
 - Excel export passed.
-- Excel template download passed.
-- Print style passed; top buttons, tabs, import controls, and export menus are hidden during printing.
+- Excel roster template download passed.
+- Print styles passed. Top buttons, tabs, import controls, and export menus are hidden during printing.
 
 ## Windows Launcher
 
-- Windows one-click launcher passed.
-- Node.js and pnpm checks passed.
+- Windows launcher passed.
+- The setup script checks Node.js and pnpm.
+- The setup script prepares pnpm through corepack when pnpm is missing.
+- The setup script downloads portable Node.js into the local `.runtime` directory when Node.js is missing.
 - First-run dependency installation passed.
 - Local development server startup passed.
 - Browser auto-open after server readiness passed.
-- Added one-click environment setup and launcher script with corepack-based pnpm preparation.
-- Added local `.runtime` support for downloading portable Node.js when Node.js is missing.
-- Added `START_HERE.bat` as an easy-to-find launcher for users who download the ZIP package.
+- `START_HERE.bat` is available as the recommended launcher for ZIP downloads.
 
-## Persistence
+## Local Persistence
 
 - localStorage persistence passed.
-- The latest imported data and generated report can be restored after page refresh.
+- The latest imported data and generated analysis report can be restored after page refresh.
 - The localStorage cache is cleared after using “清空当前数据”.
 
 ## Known Note
 
-- Vite may show a bundle-size warning during build because PPT, Word, PDF, and Excel export libraries are relatively large. This warning does not affect build success, startup, or runtime behavior.
+- Vite reports that some chunks exceed the default size threshold during build because PPT, Word, PDF, and Excel export dependencies are relatively large. This message does not affect build success, startup, or runtime behavior.

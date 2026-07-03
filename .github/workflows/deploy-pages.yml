@@ -37,7 +37,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Build
+      - name: Build application
         run: pnpm build
 
       - name: Configure Pages
@@ -56,6 +56,6 @@ jobs:
     needs: build
 
     steps:
-      - name: Deploy to GitHub Pages
+      - name: Deploy static site to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

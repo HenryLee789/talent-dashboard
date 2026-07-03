@@ -1,91 +1,77 @@
 # User Guide
 
-This guide is written for regular users. No coding knowledge is required.
+This guide explains how to start Talent Management Dashboard on Windows, import an Excel roster, review the dashboard, generate analysis reports, and export report files.
 
-## Step 1: Start the App
+## 1. Start the Application
 
-Find this file in the project folder:
+After downloading and extracting the repository ZIP package, double-click the launcher in the project root:
 
 ```text
 START_HERE.bat
 ```
 
-Or use the Chinese launcher:
+The script checks the local runtime environment, prepares Node.js, pnpm, and project dependencies, and opens the browser after the application starts.
+
+The Chinese launcher is also available:
 
 ```text
 一键部署环境并启动.bat
 ```
 
-Double-click it to deploy the required environment and start the app.
-
-On first startup, the script checks Node.js and pnpm. If Node.js is missing, it downloads a portable Node.js runtime into the local `.runtime` folder. If pnpm is missing, it prepares pnpm through corepack. It then installs project dependencies automatically. This can take a few minutes. Keep the command window open.
-
-If Node.js and pnpm are already configured on the computer, you can also double-click:
+For environments where Node.js and pnpm are already configured, the original launcher can also be used:
 
 ```text
 启动人才看板.bat
 ```
 
-After startup, the browser should open automatically. If it does not, visit:
+After startup, the application runs at:
 
 ```text
 http://127.0.0.1:5173/
 ```
 
-If startup fails, check whether Node.js and pnpm are installed.
+Closing the launcher window stops the local service.
 
-To stop the app:
+## 2. Download the Excel Roster Template
 
-```text
-Close the launcher command window.
-```
-
-To create a desktop shortcut:
-
-1. Right-click `START_HERE.bat` or `一键部署环境并启动.bat`.
-2. Choose “Send to > Desktop shortcut”.
-3. Use the desktop shortcut next time.
-
-## Step 2: Download the Excel Template
-
-After opening the app, click “下载模板” in the top-right area. The app downloads:
+After opening the application, click “下载模板” in the top-right area. The application downloads:
 
 ```text
 关键人才花名册模板.xlsx
 ```
 
-The template has three sheets:
+The template contains:
 
-- `花名册`: fill official import data here.
-- `填写示例`: examples only; do not keep them as official data.
+- `花名册`: official import data.
+- `填写示例`: sample rows for reference; remove sample data before import.
 - `填写说明`: field rules and supported aliases.
 
-## Step 3: Fill in the Roster
+## 3. Fill in the Roster
 
-Open the template and fill employee rows in the `花名册` sheet.
+Fill employee records in the `花名册` sheet.
 
-Notes:
+Rules:
 
 - The first row must contain field headers.
-- Do not add a title, note, or blank row before the header row.
-- Each row represents one employee.
-- The `填写示例` sheet is only for reference.
-- Do not commit real sensitive employee data to a public GitHub repository.
+- Do not add a title, instruction, or blank row before the headers.
+- Each row represents one employee record.
+- Sample data is for reference only and should not be imported as official data.
+- Real employee rosters and generated reports should not be committed to a public repository.
 
-## Step 4: Import Excel
+## 4. Import Excel
 
-Return to the app, click “导入Excel”, and choose your completed `.xlsx` or `.xls` file.
+Click “导入Excel” in the top-right area and select a completed `.xlsx` or `.xls` file.
 
 After import, open the “数据录入” tab to review:
 
 - Imported row count.
 - Field mapping results.
 - Missing fields.
-- Data-quality notes.
+- Data quality notes.
 
-## Step 5: View the Dashboard
+## 5. View the Dashboard
 
-Open the “数据看板” tab to view the generated talent dashboard, including:
+Open the “数据看板” tab to review metrics and analysis modules generated from the Excel roster:
 
 - Key talent count.
 - Male/female ratio.
@@ -93,50 +79,60 @@ Open the “数据看板” tab to view the generated talent dashboard, includin
 - Master-degree-and-above ratio.
 - Under-35 ratio.
 - Average tenure.
-- Age, education, tenure, and performance charts.
+- Age, education, tenure, and performance distributions.
 - Talent matrix and succession risk warnings.
 
-## Step 6: Generate the Report
+## 6. Generate an Analysis Report
 
-Click the “生成报告” dropdown and choose “生成当前月报告”.
+Click “生成报告” and choose “生成当前月报告”.
 
-The app generates an analysis report from the current Excel data, including overview, structure analysis, performance analysis, risk notes, management insights, and action suggestions.
+The system generates an analysis report from the current Excel roster, including executive overview, talent structure analysis, performance analysis, risk notes, management insights, and action recommendations.
 
-If no Excel file has been imported, the app generates a preview report clearly marked as sample content.
+When no Excel roster has been imported, the system displays sample data and a sample report to demonstrate the page layout.
 
-## Step 7: Export PPT / Word / PDF / Excel
+## 7. Export Reports
 
-Click the “生成报告” dropdown to export:
+Use the “生成报告” dropdown to export:
 
 - PPT report.
 - Word report.
 - PDF report.
 - Excel report.
 
-If no report exists yet, the app generates the current monthly report first and then exports the selected file.
+If no analysis report has been generated before export, the system generates the current monthly report first and then exports the selected file.
 
-## Step 8: Print
+## 8. Print
 
 Click “打印” to print the current page.
 
-During printing, the app hides top buttons, tabs, import controls, and export menus, keeping only print-friendly content.
+During printing, the system hides top buttons, tabs, import controls, and export menus, leaving only print-friendly content.
 
-The printed content depends on the current tab:
+Printed content depends on the current tab:
 
 - “数据看板” prints the dashboard.
-- “分析报告” prints the report.
+- “分析报告” prints the analysis report.
 - “数据录入” prints the data-entry summary.
 
-## Missing-Field Handling
+## 9. Clear Data
 
-Missing Excel fields do not block import, and the app does not fabricate data.
+Click “清空当前数据” to remove imported data, field mapping results, missing fields, data quality notes, and generated reports from browser localStorage.
 
-Examples:
+This action only clears the current browser cache. It does not delete Excel files from the computer.
 
-- If `绩效等级` is missing, the performance chart shows no data.
-- If `学历` is missing, education metrics and charts show empty states.
-- If `是否关键人才` is missing but `人才分类` exists, the app uses available fields where possible.
-- If `年龄` is missing but `出生日期` exists, the app can derive age where possible.
-- If `任职年限` is missing but `入职日期` exists, the app can derive tenure where possible.
+## 10. FAQ
 
-Reports and exports also explain which analyses cannot be generated because of missing fields.
+### The Windows launcher does not start
+
+Use `START_HERE.bat` first. The script prepares the local runtime environment automatically. If a download fails during setup, check the network connection and run the script again.
+
+### Some metrics or charts are empty
+
+The Excel roster is missing the required fields, or the mapped fields contain no usable data. Open the “数据录入” tab to review field mapping results, missing fields, and data quality notes.
+
+### Can the Excel roster use different field names
+
+Yes. The system supports common Chinese and English aliases. See [Field-Mapping.en-US.md](Field-Mapping.en-US.md) for the full field list.
+
+### How should real employee data be handled
+
+Talent Management Dashboard is designed to run locally in the browser. Real employee rosters, Excel files containing sensitive personal data, and generated reports should not be committed to a public repository.
