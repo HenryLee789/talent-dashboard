@@ -10,6 +10,8 @@ const serverReadyTimeoutMs = 60_000;
 let devProcess = null;
 let openedBrowser = false;
 let detectedUrl = "";
+let packageManagerCommand = "pnpm";
+let packageManagerArgsPrefix = [];
 
 function log(message = "") {
   console.log(message);
@@ -38,10 +40,27 @@ function runCheck(command, args) {
   });
 }
 
+function formatCommand(command, args) {
+  return [command, ...args].join(" ");
+}
+
+function setPackageManager(command, argsPrefix = []) {
+  packageManagerCommand = command;
+  packageManagerArgsPrefix = argsPrefix;
+}
+
+function runPackageManagerCheck(args) {
+  return runCheck(packageManagerCommand, [...packageManagerArgsPrefix, ...args]);
+}
+
+function runPackageManagerCommand(args, label) {
+  runCommand(packageManagerCommand, [...packageManagerArgsPrefix, ...args], label);
+}
+
 function runCommand(command, args, label) {
   log("");
   log(label);
-  log(`${command} ${args.join(" ")}`);
+  log(formatCommand(command, args));
 
   const result = childProcess.spawnSync([command, ...args].join(" "), {
     cwd: projectRoot,
@@ -54,6 +73,57 @@ function runCommand(command, args, label) {
   }
 }
 
+function detectPackageManager() {
+  const pnpmCheck = runCheck("pnpm", ["--version"]);
+
+  if (pnpmCheck.status === 0) {
+    setPackageManager("pnpm");
+    return {
+      ok: true,
+      version: pnpmCheck.stdout.trim(),
+    };
+  }
+
+  const corepackCheck = runCheck("corepack", ["--version"]);
+
+  if (corepackCheck.status !== 0) {
+    return {
+      ok: false,
+      message:
+        "未检测到 pnpm，也未检测到 corepack。请安装新版 Node.js，或执行 npm install -g pnpm 后重新启动。",
+    };
+  }
+
+  log("未检测到 pnpm，正在尝试使用 Node.js 自带的 corepack 启动 pnpm...");
+  runCheck("corepack", ["enable"]);
+
+  const pnpmAfterEnableCheck = runCheck("pnpm", ["--version"]);
+
+  if (pnpmAfterEnableCheck.status === 0) {
+    setPackageManager("pnpm");
+    return {
+      ok: true,
+      version: pnpmAfterEnableCheck.stdout.trim(),
+    };
+  }
+
+  setPackageManager("corepack", ["pnpm"]);
+  const corepackPnpmCheck = runPackageManagerCheck(["--version"]);
+
+  if (corepackPnpmCheck.status === 0) {
+    return {
+      ok: true,
+      version: `corepack pnpm ${corepackPnpmCheck.stdout.trim()}`,
+    };
+  }
+
+  return {
+    ok: false,
+    message:
+      "已检测到 Node.js 和 corepack，但 pnpm 启动失败。请打开 PowerShell 执行 corepack enable，或执行 npm install -g pnpm 后重新双击启动器。",
+  };
+}
+
 function checkEnvironment() {
   const nodeCheck = runCheck("node", ["--version"]);
   if (nodeCheck.status !== 0) {
@@ -61,14 +131,14 @@ function checkEnvironment() {
     return false;
   }
 
-  const pnpmCheck = runCheck("pnpm", ["--version"]);
-  if (pnpmCheck.status !== 0) {
-    fail("未检测到 pnpm。请先安装 pnpm，或在安装 Node.js 后执行 corepack enable。");
+  const packageManagerCheck = detectPackageManager();
+  if (!packageManagerCheck.ok) {
+    fail(packageManagerCheck.message);
     return false;
   }
 
   log(`Node.js：${nodeCheck.stdout.trim() || process.version}`);
-  log(`pnpm：${pnpmCheck.stdout.trim()}`);
+  log(`pnpm：${packageManagerCheck.version}`);
   return true;
 }
 
@@ -82,7 +152,7 @@ function ensureDependencies() {
 
   log("首次启动检测到 node_modules 不存在，将自动安装依赖。");
   log("这一步可能需要几分钟，请保持窗口打开。");
-  runCommand("pnpm", ["install"], "正在安装依赖");
+  runPackageManagerCommand(["install"], "正在安装依赖");
 }
 
 function requestUrl(url) {
@@ -122,11 +192,19 @@ function startDevServer() {
   log("关闭这个命令行窗口后，系统服务会停止。");
   log("");
 
-  devProcess = childProcess.spawn("pnpm dev --host 127.0.0.1", {
+  devProcess = childProcess.spawn(
+    formatCommand(packageManagerCommand, [
+      ...packageManagerArgsPrefix,
+      "dev",
+      "--host",
+      "127.0.0.1",
+    ]),
+    {
     cwd: projectRoot,
     shell: true,
     stdio: ["inherit", "pipe", "pipe"],
-  });
+    },
+  );
 
   devProcess.stdout.on("data", (chunk) => {
     const text = chunk.toString();
